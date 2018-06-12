@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style/main.css">
+    <script src="js/index.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <form id="sampleDataForm">
+        Slot (0,0): <input type="text" name="slot_00"><br>
+        Slot (0,1): <input type="text" name="slot_01"><br>
+        Slot (0,2): <input type="text" name="slot_02"><br>
+        <br>
+        Slot (1,0): <input type="text" name="slot_10"><br>
+        Slot (1,1): <input type="text" name="slot_11"><br>
+        Slot (1,2): <input type="text" name="slot_12"><br>
+        <br>
+        Slot (2,0): <input type="text" name="slot_20"><br>
+        Slot (2,1): <input type="text" name="slot_21"><br>
+        Slot (2,2): <input type="text" name="slot_22"><br>
+    </form>
+
+    <button onclick="updateUI()">Update</button>
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo"></p>
+
+    <div class="center">
+        <div class="game-container">
+            <div class="grid-container" id="grid-container">
+                <div class="grid-row">
+                    <div class="grid-cell red"><p class="label">R</p></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell blue"><p class="label">B</p></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell white"><p class="label">W</p></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell blue"><p class="label">B</p></div>
+                    <div class="grid-cell blue"><p class="label">B</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body></html>
