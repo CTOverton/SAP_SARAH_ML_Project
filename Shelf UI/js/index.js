@@ -1,4 +1,9 @@
 var reds, blues, whites, empty, missing = 0;
+var slotValues = [
+    ["A","B","C"],
+    ["D","E","F"],
+    ["G","H","I"]
+];
 
 function updateUI() {
     var form = document.getElementById("sampleDataForm");
@@ -14,28 +19,23 @@ function updateUI() {
     var slot_21 = form.elements["slot_22"].value;
     var slot_22 = form.elements["slot_21"].value;
 
-    var slots = [
-        slot_00, slot_01, slot_02,
-        slot_10, slot_11, slot_12,
-        slot_20, slot_21, slot_22,
+    slotValues = [
+        [slot_00, slot_01, slot_02],
+        [slot_10, slot_11, slot_12],
+        [slot_20, slot_21, slot_22],
     ];
 
-}
+    var gridChildren = document.getElementById("grid-container").children;
 
-
-function myFunction() {
-    var c = document.getElementById("grid-container").childNodes;
-    var b;
-    var txt = "";
-    for (var i = 0; i < c.length; i++) {
-        txt = txt + "Row: " + c[i].nodeName + "<br>";
-        b = c[i].childNodes;
-        for (var j = 0; j < b.length; j++) {
-            txt = txt + "Cell: " + b[i].nodeName + " Value: " + b[i].className + "<br>";
+    for (var i = 0; i < gridChildren.length; i++) {
+        var rowChildren = gridChildren[i].children;
+        for (var j = 0; j < rowChildren.length; j++) {
+            var txt = "";
+            txt = slotValues[i][j];
+            txt = "<p class=\"label\">" + txt + "</p>";
+            rowChildren[j].innerHTML = txt;
         }
 
     }
 
-    document.getElementById("demo").innerHTML = txt;
 }
-
