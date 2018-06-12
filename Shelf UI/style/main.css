@@ -95,10 +95,18 @@ hr {
     background: rgb(214, 98, 98);
 }
 
+.grid-cell.white {
+    background: rgb(255, 255, 255);
+}
+
 .grid-cell.blue {
     background: rgb(98, 141, 214);
 }
 
-.grid-cell.white {
-    background: rgb(255, 255, 255);
+.grid-cell.empty {
+    background: rgb(152, 156, 169);
+}
+
+.grid-cell.missing {
+    background: rgb(247, 244, 135);
 }
