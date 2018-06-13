@@ -4,28 +4,41 @@
     <title>Title</title>
     <link rel="stylesheet" href="style/main.css">
     <script src="js/index.js"></script>
-
+    <script src="js/nav.js"></script>
 </head>
 <body>
 <div class="container">
-    <form id="sampleDataForm">
-        Slot (0,0): <input type="text" name="slot_00"><br>
-        Slot (0,1): <input type="text" name="slot_01"><br>
-        Slot (0,2): <input type="text" name="slot_02"><br>
-        <br>
-        Slot (1,0): <input type="text" name="slot_10"><br>
-        Slot (1,1): <input type="text" name="slot_11"><br>
-        Slot (1,2): <input type="text" name="slot_12"><br>
-        <br>
-        Slot (2,0): <input type="text" name="slot_20"><br>
-        Slot (2,1): <input type="text" name="slot_21"><br>
-        Slot (2,2): <input type="text" name="slot_22"><br>
-    </form>
 
-    <button onclick="updateUI()">Update</button>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <form id="sampleDataForm">
+            Slot (0,0): <input type="text" name="slot_00" placeholder="R"><br>
+            Slot (0,1): <input type="text" name="slot_01" placeholder="W"><br>
+            Slot (0,2): <input type="text" name="slot_02" placeholder="B"><br>
+            <br>
+            Slot (1,0): <input type="text" name="slot_10" placeholder="R"><br>
+            Slot (1,1): <input type="text" name="slot_11" placeholder="E"><br>
+            Slot (1,2): <input type="text" name="slot_12" placeholder="W"><br>
+            <br>
+            Slot (2,0): <input type="text" name="slot_20" placeholder="W"><br>
+            Slot (2,1): <input type="text" name="slot_21" placeholder="B"><br>
+            Slot (2,2): <input type="text" name="slot_22" placeholder="M"><br>
+        </form>
+        <div class="center"><button onclick="updateUI()">Update</button></div>
+        <!--<button onclick="updateTotals()">Test</button>-->
+    </div>
 
     <div class="center">
-        <div class="game-container">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Sample Data</span>
+    </div>
+
+
+
+
+    <p id="test"></p>
+
+    <div class="center">
+        <div class="grid-container-background">
             <div class="grid-container" id="grid-container">
                 <div class="grid-row">
                     <div class="grid-cell red"><p class="label">R</p></div>
@@ -45,6 +58,25 @@
             </div>
         </div>
     </div>
+
+    <div class="totals-container">
+        <div class="totals-container-left">
+            <p>Red</p>
+            <p>White</p>
+            <p>Blue</p>
+            <p>Empty</p>
+            <p>Missing</p>
+        </div>
+        <div class="totals-container-separator"></div>
+        <div class="totals-container-right">
+            <div class="totals-bar red"></div>
+            <div class="totals-bar white"></div>
+            <div class="totals-bar blue"></div>
+            <div class="totals-bar empty"></div>
+            <div class="totals-bar missing"></div>
+        </div>
+    </div>
+
 </div>
 
 </body></html>
