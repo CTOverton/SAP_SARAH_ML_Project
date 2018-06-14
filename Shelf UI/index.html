@@ -12,19 +12,20 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <form id="sampleDataForm">
-            Slot (0,0): <input type="text" name="slot_00" placeholder="R"><br>
-            Slot (0,1): <input type="text" name="slot_01" placeholder="W"><br>
-            Slot (0,2): <input type="text" name="slot_02" placeholder="B"><br>
+            Slot (0,0): <input type="text" name="slot_00"><br>
+            Slot (0,1): <input type="text" name="slot_01"><br>
+            Slot (0,2): <input type="text" name="slot_02"><br>
             <br>
-            Slot (1,0): <input type="text" name="slot_10" placeholder="R"><br>
-            Slot (1,1): <input type="text" name="slot_11" placeholder="E"><br>
-            Slot (1,2): <input type="text" name="slot_12" placeholder="W"><br>
+            Slot (1,0): <input type="text" name="slot_10"><br>
+            Slot (1,1): <input type="text" name="slot_11"><br>
+            Slot (1,2): <input type="text" name="slot_12"><br>
             <br>
-            Slot (2,0): <input type="text" name="slot_20" placeholder="W"><br>
-            Slot (2,1): <input type="text" name="slot_21" placeholder="B"><br>
-            Slot (2,2): <input type="text" name="slot_22" placeholder="M"><br>
+            Slot (2,0): <input type="text" name="slot_20"><br>
+            Slot (2,1): <input type="text" name="slot_21"><br>
+            Slot (2,2): <input type="text" name="slot_22"><br>
         </form>
-        <div class="center"><button onclick="updateUI()">Update</button></div>
+        <button onclick="updateSampleData()">Update</button>
+        <button onclick="randomizeData()">Randomize</button>
         <!--<button onclick="updateTotals()">Test</button>-->
     </div>
 

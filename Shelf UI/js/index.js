@@ -5,11 +5,23 @@ var slotValues = [
     ["W","B","M"]
 ];
 window.onload = function(){
+    randomizeData();
     updateTotals();
     updateSlot();
 };
 
-function updateUI() {
+function randomizeData() {
+    var letters = ["R","W","B","E","M"];
+
+    for (var i = 0; i < slotValues.length; i++) {
+        for (var j = 0; j < slotValues.length; j++) {
+            slotValues[i][j] = letters[Math.floor(Math.random() * letters.length)];
+        }
+    }
+    updateUI();
+}
+
+function updateSampleData() {
     var form = document.getElementById("sampleDataForm");
     var slot_00 = form.elements["slot_00"].value;
     var slot_01 = form.elements["slot_01"].value;
@@ -29,6 +41,10 @@ function updateUI() {
         [slot_20, slot_21, slot_22],
     ];
 
+    updateUI();
+}
+
+function updateUI() {
     updateSlot();
     updateTotals();
 }
