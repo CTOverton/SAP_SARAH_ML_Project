@@ -12,19 +12,24 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <form id="sampleDataForm">
-            Slot (0,0): <input type="text" name="slot_00"><br>
-            Slot (0,1): <input type="text" name="slot_01"><br>
-            Slot (0,2): <input type="text" name="slot_02"><br>
+            Slot (0,0): <input type="text" id="slot_00"><br>
+            Slot (0,1): <input type="text" id="slot_01"><br>
+            Slot (0,2): <input type="text" id="slot_02"><br>
             <br>
-            Slot (1,0): <input type="text" name="slot_10"><br>
-            Slot (1,1): <input type="text" name="slot_11"><br>
-            Slot (1,2): <input type="text" name="slot_12"><br>
+            Slot (1,0): <input type="text" id="slot_10"><br>
+            Slot (1,1): <input type="text" id="slot_11"><br>
+            Slot (1,2): <input type="text" id="slot_12"><br>
             <br>
-            Slot (2,0): <input type="text" name="slot_20"><br>
-            Slot (2,1): <input type="text" name="slot_21"><br>
-            Slot (2,2): <input type="text" name="slot_22"><br>
+            Slot (2,0): <input type="text" id="slot_20"><br>
+            Slot (2,1): <input type="text" id="slot_21"><br>
+            Slot (2,2): <input type="text" id="slot_22"><br>
+
         </form>
-        <button onclick="updateSampleData()">Update</button>
+        <button onclick="updateSampleData(
+            [slot_00.value, slot_01.value, slot_02.value],
+            [slot_10.value, slot_11.value, slot_12.value],
+            [slot_20.value, slot_21.value, slot_22.value]
+        )">Update</button>
         <button onclick="randomizeData()">Randomize</button>
         <!--<button onclick="updateTotals()">Test</button>-->
     </div>
