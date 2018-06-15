@@ -48,7 +48,7 @@ def crop(imgFile, lnX, lnY, exportPath, batchName):
 def load_images_from_folder(folder):
     images = []
     for filename in os.listdir(folder):
-        if filename.endswith(".jpg"):
+        if (filename.endswith(".jpg") or filename.endswith(".JPG") or filename.endswith(".png")):
             img = Image.open(os.path.join(folder, filename))
             if img is not None:
                 images.append(img)
@@ -101,8 +101,12 @@ if __name__ == '__main__':
     # lnX: x positions for horizontal bounds
     # lnY: y positions for vertical bounds
     # ----------------------------------------
-    sourceDir = '/Users/I870033/OneDrive - SAP SE/Projects/SAP_SARAH_ML/Training/Test1_Source/'
-    exportDir = '/Users/I870033/OneDrive - SAP SE/Projects/SAP_SARAH_ML/Training/Test1_Export/'
+    # sourceDir = '/Users/I870033/OneDrive - SAP SE/Projects/SAP_SARAH_ML/Training/Test1_Source/'
+    # exportDir = '/Users/I870033/OneDrive - SAP SE/Projects/SAP_SARAH_ML/Training/Test1_Export/'
+
+    sourceDir = '/Users/I870033/SAP SE/MaxAttention Innovation Sarah M L - Documents/Programming/Training/Test1_Source/'
+    exportDir = '/Users/I870033/SAP SE/MaxAttention Innovation Sarah M L - Documents/Programming/Training/Test1_Export/'
+
 
     # lnX1 = 240
     # lnX2 = 1026
