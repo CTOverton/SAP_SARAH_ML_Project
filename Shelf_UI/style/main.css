@@ -166,7 +166,7 @@ width: 140px;
 }
 
 .totals-bar.red {
-    background: rgb(214, 98, 98);
+    background: rgb(214, 83, 97);
 }
 
 .totals-bar.white {
@@ -227,7 +227,7 @@ width: 140px;
     margin-right: 0; }
 
 .grid-cell.red {
-    background: rgb(214, 98, 98);
+    background: rgb(214, 74, 92);
 }
 
 .grid-cell.white {

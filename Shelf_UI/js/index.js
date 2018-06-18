@@ -41,7 +41,9 @@ function updateTotals() {
 
     for (var i = 0; i < slotValues.length; i++) { // Loop for rows
         for (var j = 0; j < slotValues[i].length; j++) { // Loop for cols
-            switch (slotValues[i][j].toLowerCase()){
+            slotValue = slotValues[i][j];
+
+            switch (slotValue.toLowerCase()){
                 case "r":
                     reds += 1;
                     break;
