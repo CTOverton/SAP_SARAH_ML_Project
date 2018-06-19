@@ -1,0 +1,22 @@
+.config-container {
+    width: 400px;
+}
+
+.config-item {
+    height: 60px;
+    margin-bottom:  10px;
+    background-color: #0000001f;
+    display:  flex;
+}
+
+.config-item:last-child {
+    margin-bottom:  0px;
+}
+
+.config-item p {
+    margin: auto;
+}
+
+.config-item img {
+    height: 100%;
+}
