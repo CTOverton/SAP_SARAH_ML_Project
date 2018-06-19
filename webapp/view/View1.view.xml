@@ -3,7 +3,28 @@
 	<App>
 		<pages>
 			<Page title="{i18n>title}">
-				<content></content>
+				<content>
+					<Panel id="__panel0" headerText="Test App UI" expandable="true" expanded="true">
+				    <content>
+				        <Label text="Label" width="100%" id="__label0"/>
+				        <List noDataText="Drop list items here" id="__list0">
+				            <items>
+				                <StandardListItem type="Navigation" title="List Item 00" description="Description text" icon="sap-icon://picture" id="__item01"/>
+				                <StandardListItem type="Navigation" title="List Item 01" description="Description text" icon="sap-icon://picture" id="__item02"/>
+				                <StandardListItem type="Navigation" title="List Item 02" description="Description text" icon="sap-icon://picture" id="__item03"/>
+				                
+				                <StandardListItem type="Navigation" title="List Item 11" description="Description text" icon="sap-icon://picture" id="__item11"/>
+				                <StandardListItem type="Navigation" title="List Item 12" description="Description text" icon="sap-icon://picture" id="__item12"/>
+				                <StandardListItem type="Navigation" title="List Item 13" description="Description text" icon="sap-icon://picture" id="__item13"/>
+				                
+				                <StandardListItem type="Navigation" title="List Item 21" description="Description text" icon="sap-icon://picture" id="__item21"/>
+				                <StandardListItem type="Navigation" title="List Item 22" description="Description text" icon="sap-icon://picture" id="__item22"/>
+				                <StandardListItem type="Navigation" title="List Item 23" description="Description text" icon="sap-icon://picture" id="__item23"/>
+				        	</items>
+				        </List>
+				    </content>
+				    </Panel>
+				</content>
 			</Page>
 		</pages>
 	</App>
