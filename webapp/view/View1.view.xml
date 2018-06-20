@@ -1,27 +1,47 @@
-<mvc:View controllerName="SAP_SARAH_ML_Project.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true" xmlns="sap.m">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="SAP_SARAH_ML_Project.controller.View1" displayBlock="true">
 	<App>
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
 					<Panel id="__panel0" headerText="Test App UI" expandable="true" expanded="true">
 				    <content>
-				        <Label text="Label" width="100%" id="__label0"/>
-				        <List noDataText="Drop list items here" id="__list0">
-				            <items>
-				                <StandardListItem type="Navigation" title="List Item 00" description="Description text" icon="sap-icon://picture" id="__item01"/>
-				                <StandardListItem type="Navigation" title="List Item 01" description="Description text" icon="sap-icon://picture" id="__item02"/>
-				                <StandardListItem type="Navigation" title="List Item 02" description="Description text" icon="sap-icon://picture" id="__item03"/>
-				                
-				                <StandardListItem type="Navigation" title="List Item 11" description="Description text" icon="sap-icon://picture" id="__item11"/>
-				                <StandardListItem type="Navigation" title="List Item 12" description="Description text" icon="sap-icon://picture" id="__item12"/>
-				                <StandardListItem type="Navigation" title="List Item 13" description="Description text" icon="sap-icon://picture" id="__item13"/>
-				                
-				                <StandardListItem type="Navigation" title="List Item 21" description="Description text" icon="sap-icon://picture" id="__item21"/>
-				                <StandardListItem type="Navigation" title="List Item 22" description="Description text" icon="sap-icon://picture" id="__item22"/>
-				                <StandardListItem type="Navigation" title="List Item 23" description="Description text" icon="sap-icon://picture" id="__item23"/>
-				        	</items>
-				        </List>
+				        <HBox width="100%" id="__hbox0">
+			                <VBox width="100%" direction="Column" id="__vbox0">
+			                	<VBox class="grid-container" id="grid-container">
+				                	<HBox class="grid-row">
+				                		<VBox id="grid-cell-00" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-00" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-01" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-01" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-02" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-02" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                	</HBox>
+				                	<HBox class="grid-row">
+				                		<VBox id="grid-cell-10" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-10" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-11" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-11" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-12" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-12" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                	</HBox>
+				                	<HBox class="grid-row">
+				                		<VBox id="grid-cell-20" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-20" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-21" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-21" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-22" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-22" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                	</HBox>
+			                	</VBox>
+			                	<Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
+			                </VBox>
+			                <VBox width="100%" direction="Column" id="__vbox1">
+		                        <List noDataText="Drop list items here" id="__list0">
+	                                <StandardListItem type="Navigation" title="List Item 1" description="Description text" icon="sap-icon://picture" id="__item00"/>
+	                                <StandardListItem type="Navigation" title="List Item 2" description="Description text" icon="sap-icon://picture" id="__item01"/>
+	                                <StandardListItem type="Navigation" title="List Item 3" description="Description text" icon="sap-icon://picture" id="__item02"/>
+	                                
+	                                <StandardListItem type="Navigation" title="List Item 1" description="Description text" icon="sap-icon://picture" id="__item10"/>
+	                                <StandardListItem type="Navigation" title="List Item 2" description="Description text" icon="sap-icon://picture" id="__item11"/>
+	                                <StandardListItem type="Navigation" title="List Item 3" description="Description text" icon="sap-icon://picture" id="__item12"/>
+	                                
+	                                <StandardListItem type="Navigation" title="List Item 1" description="Description text" icon="sap-icon://picture" id="__item20"/>
+	                                <StandardListItem type="Navigation" title="List Item 2" description="Description text" icon="sap-icon://picture" id="__item21"/>
+	                                <StandardListItem type="Navigation" title="List Item 3" description="Description text" icon="sap-icon://picture" id="__item22"/>
+		                        </List>
+			                </VBox>
+				        </HBox>
 				    </content>
 				    </Panel>
 				</content>

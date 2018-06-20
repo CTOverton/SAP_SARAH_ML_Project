@@ -1,1 +1,68 @@
-/* Enter your custom styles here */
+/* colors
+background blue #eff4f9
+title bar blue: #aec9df
+highlighted selection blue: #d3e1ec
+graph blue: #d3e1ec
+
+*/
+
+.grid-container {
+    position: relative;
+    margin: auto;
+    padding: 15px;
+    background: #d3e1ec;
+    border-radius: 6px;
+    width: 360px;
+    height: 360px;
+}
+
+.grid-row {
+    margin-bottom: 15px; }
+.grid-row:last-child {
+    margin-bottom: 0; }
+.grid-row:after {
+    content: "";
+    display: block;
+    clear: both; }
+
+.grid-cell {
+    width: 33%;
+    height: 100px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 3px;
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(152, 156, 169);
+    transition: 0.3s;
+}
+.grid-cell:last-child {
+    margin-right: 0; }
+
+.grid-cell.red {
+    background: #f66364;
+}
+
+.grid-cell.white {
+	background: #fafafa;
+    /*background: #bac1c4;*/
+}
+
+.grid-cell.blue {
+    background: #84caec;
+}
+
+.grid-cell.empty {
+    background: rgb(152, 156, 169);
+}
+
+.grid-cell.missing {
+    background: #f5b04d;
+}
+
+.grid-icon {
+	color: #d3e1ec;
+	display: flex;
+	justify-content: center;
+}
