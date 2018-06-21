@@ -8,7 +8,10 @@ var cellValues = [
 	["R","W","B"]
 ];
 
-sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
+sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"SAP_SARAH_ML_Project/libs/jszip"
+], function(Controller, jszipjs) {
 	"use strict";
 	return Controller.extend("SAP_SARAH_ML_Project.controller.View1", {
 		onAfterRendering: function() {
@@ -16,8 +19,29 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 			// var listItems;
 			// var items = that.getView().byId("__list0");
 			this.randomizeData();
+			
+			// get DOM element of file input
+            var fileInput = $("#previewImg")[0];		//var fileInput = document.getElementById("previewImg");
+            // attach event of onchange
+            fileInput.addEventListener("change", this.onChange);
 		},
+		
+		onChange: function(oEvent){
+            //console.log("onChange is called");
+            var input = oEvent.target;
+            var reader = new FileReader();
 
+            // get file content
+            reader.onload = function(){
+                var dataUrl = reader.result;
+                // set image area
+                var image = $("#image")[0];			//var image =  document.getElementById("image");
+                image.src = dataUrl;
+            };
+            // read content
+            reader.readAsDataURL(input.files[0]);
+        },
+        
 		updateUI: function() {
 		    for (var i = 0; i < 3; i++) {
 		        for (var j = 0; j < 3; j++) {
@@ -68,6 +92,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
 				}
 			}
 			this.updateUI();
+		},
+		
+		zipImg: function() {
+			var zip = new JSZip();
+			var input = $("#previewImg")[0];
+			var img = zip.folder("images");
+            var imgData = input.files[0];
+			img.file("test.png", imgData, {base64: true});
+			
+			zip.generateAsync({type:"base64"}).then(function (base64) {window.location = "data:application/zip;base64," + base64;});
+			
+			// zip.folder("images").forEach(function (relativePath, file){
+			//     console.log("iterating over", relativePath);
+			// });
+			
+			
+			
 		}
 	});
 });
