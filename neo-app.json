@@ -11,6 +11,14 @@
       "description": "SAPUI5 Resources"
     },
     {
+      "path": "/MLConfig",
+      "target": {
+        "type": "destination",
+        "name": "MLConfig"
+      },
+      "description": "MLConfig Service"
+    },
+    {
       "path": "/test-resources",
       "target": {
         "type": "service",

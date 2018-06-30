@@ -1,12 +1,4 @@
-<mvc:View
-        controllerName="SAP_SARAH_ML_Project.controller.View1"
-        xmlns:html="http://www.w3.org/1999/xhtml"
-        xmlns:mvc="sap.ui.core.mvc"
-        displayBlock="true"
-        xmlns:l="sap.ui.layout"
-        xmlns:u="sap.ui.unified"
-        xmlns:core="sap.ui.core"
-        xmlns="sap.m">
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="SAP_SARAH_ML_Project.controller.View1" displayBlock="true">
 	<App>
 		<pages>
 			<Page title="{i18n>title}">
@@ -17,33 +9,62 @@
 			                <VBox width="100%" direction="Column" id="__vbox0">
 			                	<VBox class="grid-container" id="grid-container">
 				                	<HBox class="grid-row">
-				                		<VBox id="grid-cell-00" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-00" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
-				                		<VBox id="grid-cell-01" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-01" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
-				                		<VBox id="grid-cell-02" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-02" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-00" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-00" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-01" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-01" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-02" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-02" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
 				                	</HBox>
 				                	<HBox class="grid-row">
-				                		<VBox id="grid-cell-10" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-10" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
-				                		<VBox id="grid-cell-11" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-11" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
-				                		<VBox id="grid-cell-12" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-12" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-10" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-10" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-11" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-11" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-12" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-12" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
 				                	</HBox>
 				                	<HBox class="grid-row">
-				                		<VBox id="grid-cell-20" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-20" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
-				                		<VBox id="grid-cell-21" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-21" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
-				                		<VBox id="grid-cell-22" class="grid-cell"><sap.ui.core:Icon id="grid-cell-icon-22" xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-20" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-20" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-21" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-21" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-22" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-22" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
 				                	</HBox>
 			                	</VBox>
 			                	<Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
 			                </VBox>
 			                <VBox width="100%" direction="Column" id="__vbox1">
-			                	<core:HTML
-                                id="fileHTML"
-                                content='&lt;div&gt;&lt;input type=&quot;file&quot; id=&quot;previewImg&quot;&gt;&lt;br&gt;&lt;img id=&quot;image&quot;&gt;&lt;/div&gt;'
-                                />
-		                        <Button text="Get Zip" width="100px" id="__button1" press="zipImg"/>
+			                	<core:HTML id="fileHTML" content="&lt;div&gt;&lt;input type=&quot;file&quot; id=&quot;previewImg&quot;&gt;&lt;br&gt;&lt;img id=&quot;image&quot;&gt;&lt;/div&gt;"/>
+		                        <Button text="Get Zip" press="zipImg"/>
+		                        <Button text="Classify Image" press="onClassify"/>
 			                </VBox>
 				        </HBox>
 				    </content>
 				    </Panel>
+					<Table
+                                id="resultTable"
+                                items="{
+								path: '/results',
+								sorter: {
+									path: 'score',
+									descending: 'true'
+								}
+							}">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Image Classification Result"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="Label"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Score"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier title="{label}"/>
+                                        <Text text="{score}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
 				</content>
 			</Page>
 		</pages>
