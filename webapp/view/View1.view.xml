@@ -28,8 +28,24 @@
 			                </VBox>
 			                <VBox width="100%" direction="Column" id="__vbox1">
 			                	<core:HTML id="fileHTML" content="&lt;div&gt;&lt;input type=&quot;file&quot; id=&quot;previewImg&quot;&gt;&lt;br&gt;&lt;img id=&quot;image&quot;&gt;&lt;/div&gt;"/>
+			                	
+			                	<core:HTML id="upload_00_HTML" content="&lt;div&gt;Upload 00 Image&lt;input type=&quot;file&quot; id=&quot;upload_00&quot;&gt;&lt;/div&gt;"/>
+			                	<core:HTML id="upload_01_HTML" content="&lt;div&gt;Upload 01 Image&lt;input type=&quot;file&quot; id=&quot;upload_01&quot;&gt;&lt;/div&gt;"/>
+			                	<core:HTML id="upload_02_HTML" content="&lt;div&gt;Upload 02 Image&lt;input type=&quot;file&quot; id=&quot;upload_02&quot;&gt;&lt;/div&gt;"/>
+			                	
+			                	<core:HTML id="upload_10_HTML" content="&lt;div&gt;Upload 10 Image&lt;input type=&quot;file&quot; id=&quot;upload_10&quot;&gt;&lt;/div&gt;"/>
+			                	<core:HTML id="upload_11_HTML" content="&lt;div&gt;Upload 11 Image&lt;input type=&quot;file&quot; id=&quot;upload_11&quot;&gt;&lt;/div&gt;"/>
+			                	<core:HTML id="upload_12_HTML" content="&lt;div&gt;Upload 12 Image&lt;input type=&quot;file&quot; id=&quot;upload_12&quot;&gt;&lt;/div&gt;"/>
+			                	
+			                	<core:HTML id="upload_20_HTML" content="&lt;div&gt;Upload 20 Image&lt;input type=&quot;file&quot; id=&quot;upload_20&quot;&gt;&lt;/div&gt;"/>
+			                	<core:HTML id="upload_21_HTML" content="&lt;div&gt;Upload 21 Image&lt;input type=&quot;file&quot; id=&quot;upload_21&quot;&gt;&lt;/div&gt;"/>
+			                	<core:HTML id="upload_22_HTML" content="&lt;div&gt;Upload 22 Image&lt;input type=&quot;file&quot; id=&quot;upload_22&quot;&gt;&lt;/div&gt;"/>
+			                	
 		                        <Button text="Get Zip" press="zipImg"/>
 		                        <Button text="Classify Image" press="onClassify"/>
+		                        <Button text="Classify Zip" press="classifyZip"/>
+		                        <Button text="Lets Test Upload Zip" press="getTokentest"/>
+		                        
 			                </VBox>
 				        </HBox>
 				    </content>
