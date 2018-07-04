@@ -19,6 +19,14 @@
       "description": "MLConfig Service"
     },
     {
+      "path": "/TokenAuth",
+      "target": {
+        "type": "destination",
+        "name": "TokenAuth"
+      },
+      "description": "Bearer"
+    },
+    {
       "path": "/test-resources",
       "target": {
         "type": "service",
