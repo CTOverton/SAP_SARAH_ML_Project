@@ -6,6 +6,15 @@ graph blue: #d3e1ec
 
 */
 
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
 .grid-container {
     position: relative;
     margin: auto;
@@ -58,7 +67,8 @@ graph blue: #d3e1ec
 }
 
 .grid-cell.missing {
-    background: #f5b04d;
+	background: rgb(152, 156, 169);
+    /*background: #f5b04d;*/
 }
 
 .grid-icon {

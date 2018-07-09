@@ -3,7 +3,7 @@
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
-					<Panel id="__panel0" headerText="Test App UI" expandable="true" expanded="true">
+					<Panel id="__panel0" headerText="Shelf View" expandable="true" expanded="true">
 				    <content>
 				        <HBox width="100%" id="__hbox0">
 			                <VBox width="100%" direction="Column" id="__vbox0">
@@ -24,41 +24,26 @@
 				                		<VBox id="grid-cell-22" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-22" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
 				                	</HBox>
 			                	</VBox>
-			                	<Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
 			                </VBox>
 			                <VBox width="100%" direction="Column" id="__vbox1">
-			                	<core:HTML id="fileHTML" content="&lt;div&gt;&lt;input type=&quot;file&quot; id=&quot;previewImg&quot;&gt;&lt;br&gt;&lt;img id=&quot;image&quot;&gt;&lt;/div&gt;"/>
-			                	
-			                	<core:HTML id="upload_00_HTML" content="&lt;div&gt;Upload 00 Image&lt;input type=&quot;file&quot; id=&quot;upload_00&quot;&gt;&lt;/div&gt;"/>
-			                	<core:HTML id="upload_01_HTML" content="&lt;div&gt;Upload 01 Image&lt;input type=&quot;file&quot; id=&quot;upload_01&quot;&gt;&lt;/div&gt;"/>
-			                	<core:HTML id="upload_02_HTML" content="&lt;div&gt;Upload 02 Image&lt;input type=&quot;file&quot; id=&quot;upload_02&quot;&gt;&lt;/div&gt;"/>
-			                	
-			                	<core:HTML id="upload_10_HTML" content="&lt;div&gt;Upload 10 Image&lt;input type=&quot;file&quot; id=&quot;upload_10&quot;&gt;&lt;/div&gt;"/>
-			                	<core:HTML id="upload_11_HTML" content="&lt;div&gt;Upload 11 Image&lt;input type=&quot;file&quot; id=&quot;upload_11&quot;&gt;&lt;/div&gt;"/>
-			                	<core:HTML id="upload_12_HTML" content="&lt;div&gt;Upload 12 Image&lt;input type=&quot;file&quot; id=&quot;upload_12&quot;&gt;&lt;/div&gt;"/>
-			                	
-			                	<core:HTML id="upload_20_HTML" content="&lt;div&gt;Upload 20 Image&lt;input type=&quot;file&quot; id=&quot;upload_20&quot;&gt;&lt;/div&gt;"/>
-			                	<core:HTML id="upload_21_HTML" content="&lt;div&gt;Upload 21 Image&lt;input type=&quot;file&quot; id=&quot;upload_21&quot;&gt;&lt;/div&gt;"/>
-			                	<core:HTML id="upload_22_HTML" content="&lt;div&gt;Upload 22 Image&lt;input type=&quot;file&quot; id=&quot;upload_22&quot;&gt;&lt;/div&gt;"/>
-			                	
-		                        <Button text="Get Zip" press="zipImg"/>
-		                        <Button text="Classify Image" press="onClassify"/>
-		                        <Button text="Classify Zip" press="classifyZip"/>
-		                        <Button text="Lets Test Upload Zip" press="getTokentest"/>
-		                        
+			                	<core:HTML id="fileHTML" content="
+				                	&lt;div&gt;
+									&lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;upload_file&quot; class=&quot;inputfile&quot; /&gt;
+									&lt;label for=&quot;upload_file&quot;id=&quot;upload_file_label&quot;class=&quot;sapMBtnDefault sapMBtnHoverable sapMBtnInner sapMBtnText sapMFocusable&quot; style=&quot;padding: 10px&quot;&gt;Classify&lt;/label&gt;
+									&lt;br&gt;&lt;img id=&quot;image&quot;&gt;
+									&lt;/div&gt;
+								"/>
+		                        <!--<Button text="Classify" press="classify"/>-->
 			                </VBox>
 				        </HBox>
 				    </content>
 				    </Panel>
-					<Table
-                                id="resultTable"
-                                items="{
-								path: '/results',
-								sorter: {
-									path: 'score',
-									descending: 'true'
-								}
-							}">
+				    <Panel id="__pane20" headerText="Settings" expandable="true" expanded="false">
+				    <content>
+				        <HBox width="100%">
+			                <Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
+				        </HBox>
+				        <Table id="resultTable" items="{         path: '/results',         sorter: {          path: 'score',          descending: 'true'         }        }">
                             <headerToolbar>
                                 <Toolbar>
                                     <Title text="Image Classification Result"/>
@@ -81,6 +66,8 @@
                                 </ColumnListItem>
                             </items>
                         </Table>
+				    </content>
+				    </Panel>
 				</content>
 			</Page>
 		</pages>
