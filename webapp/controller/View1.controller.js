@@ -1,4 +1,5 @@
 // ==== Global Variables ==== //
+var test = "";
 var bearing_icon = "overlay";
 var empty_icon = "circle-task";
 var missing_icon = "decline";
@@ -8,12 +9,15 @@ var cellValues = [
 	["R","W","B"],
 	["R","W","B"]
 ];
+var configured = "false";
+
 
 // ==== SAP UI5 Standard ==== //
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"SAP_SARAH_ML_Project/libs/jszip" // Enables the jszip library (imports)
-], function(Controller, jszipjs) { // Second part of importing
+	"SAP_SARAH_ML_Project/libs/jszip", // Enables the jszip library (imports)
+	"SAP_SARAH_ML_Project/libs/cropper"
+], function(Controller, jszipjs, cropperjs) { // Second part of importing
 	"use strict";
 	return Controller.extend("SAP_SARAH_ML_Project.controller.View1", {
 		
@@ -22,6 +26,7 @@ sap.ui.define([
 		// When the program starts
 		onInit: function() {
 			this.randomizeData(); // Randomize the data
+			test = this;
 			// this.getToken()
 			// 	.then(function(result) {
 			//     // Code depending on result
@@ -38,12 +43,106 @@ sap.ui.define([
 			var that = this;
             var fileInput = $("#upload_file")[0]; // JQuery method of getting element instead of: var fileInput = document.getElementById("upload_file");
             // fileInput.addEventListener("change", this.onChange); // causes the "onChange" event to run when fileInput is changed
+            
             fileInput.addEventListener("change", function(){
             	var label = $("#upload_file_label")[0];
             	label.innerHTML = "Processing: " + fileInput.files[0].name;                      
 			    that.classify();
 			});
+			
+			// var elements = $(".config-cell");
+			// for (var i = 0; i < elements.length; i++) {
+			// 	elements[i].addEventListener("click", this.cellCrop;
+			// }
+			
+			// var elements = $(".config-cell");
+			// for (var i = 0; i < elements.length; i++) {
+			// 	elements[i].addEventListener("click", function() {
+			// 		console.log("clicked");
+			// 	});
+			// }
+			
+			// $(".config-cell")[0].addEventListener("click", function() {
+			// 	console.log("hell");
+			// });
+			
+			// var img = $("#cropimg")[0];
+			
+			// var cropper = new Cropper(img, {
+   //             aspectRatio: 4 / 4,
+   //         });
+			
+			
+			
 		},
+		
+		configUI: function() {
+			
+		},
+		
+		cellCrop: function() {
+			console.log("test");
+		},
+		
+		showhideConfig: function() {
+			var that = this;
+			var grid = this.getView().byId("grid-container");
+			var config = this.getView().byId("configUI");
+			
+			this.updateUI();
+			
+			if (grid.getVisible()) {
+				grid.setVisible(false);
+				config.setVisible(true);
+				
+				setTimeout(function() {
+					$("#input")[0].addEventListener("change", this.onChangeConfig);
+				
+				$(".config-cell").on("click", function() {
+				   console.log($(this));
+				   //this.classList.add("set");
+				   //this.class = "config-cell set";
+				   //$(this).addStyleClass(".config-cell set");
+				   
+				   var cell = that.getView().byId("config-cell-"+this.id.split("")[24]+""+this.id.split("")[25]);
+				   cell.addStyleClass("config-cell set");
+				});
+				}, 100);
+			
+			} else {
+				grid.setVisible(true);
+				config.setVisible(false);
+			}
+			
+			
+		},
+		
+		test: function() {
+			this.getView().byId("config-cell-00-img-container").setVisible(true);
+			
+			var grid = $("#config-img-00")[0];
+			
+			grid.src = "https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg?resize=640%2C426";
+		},
+		
+		// Update the preview image to be visible when image has been uploaded
+		onChangeConfig: function(oEvent){
+            var input = oEvent.target;
+            var reader = new FileReader();
+
+            // get file content
+            reader.onload = function(){
+                var dataUrl = reader.result;
+                // set image area
+                var image = $("#config-image")[0];			//var image =  document.getElementById("image");
+                image.src = dataUrl;
+            };
+            // read content
+            reader.readAsDataURL(input.files[0]);
+            
+
+			
+        },
 		
 		// Update the preview image to be visible when image has been uploaded
 		onChange: function(oEvent){
@@ -80,22 +179,18 @@ sap.ui.define([
 		                	icon.setSrc("sap-icon://"+bearing_icon);
 		                    break;
 		                case "w":
-		                	cell.removeStyleClass("grid-cell");
 		                    cell.addStyleClass("grid-cell white");
 		                	icon.setSrc("sap-icon://"+bearing_icon);
 		                    break;
 		                case "b":
-		                	cell.removeStyleClass("grid-cell");
 		                    cell.addStyleClass("grid-cell blue");
 		                	icon.setSrc("sap-icon://"+bearing_icon);
 		                    break;
 		                case "e":
-		                	cell.removeStyleClass("grid-cell");
 		                    cell.addStyleClass("grid-cell empty");
 		                	icon.setSrc("sap-icon://"+empty_icon);
 		                    break;
 		                default:
-		                	cell.removeStyleClass("grid-cell");
 		                    cell.addStyleClass("grid-cell missing");
 		                	icon.setSrc("sap-icon://"+missing_icon);
 		            }
@@ -203,3 +298,12 @@ sap.ui.define([
         }
 	});
 });
+
+
+
+
+// ================================================== Copy Paste Library
+
+// var cropper = new Cropper($("#preview")[0], {
+//                 aspectRatio: 4 / 4,
+// 	            });

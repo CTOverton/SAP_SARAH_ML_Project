@@ -24,16 +24,41 @@
 				                		<VBox id="grid-cell-22" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-22" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
 				                	</HBox>
 			                	</VBox>
+			                	<VBox id="configUI" visible="false">
+				                	<VBox class="config-container" id="config-container">
+									    <HBox class="config-row">
+									        <VBox id="config-cell-00" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-01" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-02" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									    </HBox>
+									    <HBox class="config-row">
+									        <VBox id="config-cell-10" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-11" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-12" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									    </HBox>
+									    <HBox class="config-row">
+									        <VBox id="config-cell-20" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-21" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-22" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									    </HBox>
+									</VBox>
+									<core:HTML id="configHTML" content="
+					                	&lt;div&gt;
+					                		&lt;label class=&quot;label&quot; data-toggle=&quot;tooltip&quot; title=&quot;Upload Config Image&quot;&gt;
+					                			&lt;img id=&quot;config-image&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot; alt=&quot;Upload Config Image&quot;&gt;
+									            &lt;input type=&quot;file&quot; class=&quot;sr-only&quot; id=&quot;input&quot; name=&quot;image&quot; accept=&quot;image/*&quot;&gt;
+									        &lt;/label&gt;
+									    &lt;/div&gt;
+									    &lt;div&gt;
+								        	&lt;img id=&quot;preview&quot;&gt;
+										&lt;/div&gt;
+				                	"/>
+								</VBox>
 			                </VBox>
 			                <VBox width="100%" direction="Column" id="__vbox1">
-			                	<core:HTML id="fileHTML" content="
-				                	&lt;div&gt;
-									&lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;upload_file&quot; class=&quot;inputfile&quot; /&gt;
-									&lt;label for=&quot;upload_file&quot;id=&quot;upload_file_label&quot;class=&quot;sapMBtnDefault sapMBtnHoverable sapMBtnInner sapMBtnText sapMFocusable&quot; style=&quot;padding: 10px&quot;&gt;Classify&lt;/label&gt;
-									&lt;br&gt;&lt;img id=&quot;image&quot;&gt;
-									&lt;/div&gt;
-								"/>
-		                        <!--<Button text="Classify" press="classify"/>-->
+			                		<core:HTML id="fileHTML" content="&lt;div&gt;          &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;upload_file&quot; class=&quot;inputfile&quot; /&gt;          &lt;label for=&quot;upload_file&quot;id=&quot;upload_file_label&quot;class=&quot;sapMBtnDefault sapMBtnHoverable sapMBtnInner sapMBtnText sapMFocusable&quot; style=&quot;padding: 10px&quot;&gt;Classify&lt;/label&gt;          &lt;br&gt;&lt;img id=&quot;image&quot;&gt;          &lt;/div&gt;         "/>
+				                	
+			                        <!--<Button text="Classify" press="classify"/>-->
 			                </VBox>
 				        </HBox>
 				    </content>
@@ -42,6 +67,8 @@
 				    <content>
 				        <HBox width="100%">
 			                <Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
+			                <Button text="Show/Hide Config" width="200px" id="__button1" press="showhideConfig"/>
+			                <Button text="Test" width="100px" id="__button2" press="test"/>
 				        </HBox>
 				        <Table id="resultTable" items="{         path: '/results',         sorter: {          path: 'score',          descending: 'true'         }        }">
                             <headerToolbar>
