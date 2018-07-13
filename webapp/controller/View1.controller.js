@@ -50,6 +50,37 @@ sap.ui.define([
 			    that.classify();
 			});
 			
+			
+				// Get the modal
+				//var modal = $("#myModal")[0]; //document.getElementById('myModal');
+				
+				// Get the image and insert it inside the modal - use its "alt" text as a caption
+				//var img = $("#myImg")[0]; //document.getElementById('myImg');
+				
+	
+				$("#myImg")[0].addEventListener("click", function() {
+					
+					that.getView().byId("myModal").setVisible(true);
+					setTimeout(function() {
+						var modalImg = $("#img01")[0]; //document.getElementById("img01");
+						var captionText = $("#caption")[0]; // document.getElementById("caption");
+						// modal.style.display = "block";
+					    // modalImg.src = this.src;
+					 //   captionText.innerHTML = this.alt;
+					}, 100);
+				});
+				
+				// Get the <span> element that closes the modal
+				//var span = $("#close")[0]; // document.getElementsByClassName("close")[0];
+				
+				// When the user clicks on <span> (x), close the modal
+				// $("#close")[0].addEventListener("click", function(){
+				// 	modal.style.display = "none";
+				// });
+			
+			
+			
+			
 			// var elements = $(".config-cell");
 			// for (var i = 0; i < elements.length; i++) {
 			// 	elements[i].addEventListener("click", this.cellCrop;
@@ -76,6 +107,10 @@ sap.ui.define([
 			
 		},
 		
+		closethis: function() {
+			this.getView().byId("myModal").setVisible(false);
+		},
+		
 		configUI: function() {
 			
 		},
@@ -99,13 +134,37 @@ sap.ui.define([
 					$("#input")[0].addEventListener("change", this.onChangeConfig);
 				
 				$(".config-cell").on("click", function() {
-				   console.log($(this));
+				   // console.log($(this));
 				   //this.classList.add("set");
 				   //this.class = "config-cell set";
 				   //$(this).addStyleClass(".config-cell set");
 				   
 				   var cell = that.getView().byId("config-cell-"+this.id.split("")[24]+""+this.id.split("")[25]);
 				   cell.addStyleClass("config-cell set");
+				   
+				   that.getView().byId("myModal").setVisible(true);
+					setTimeout(function() {
+						var modalImg = $("#img01")[0]; //document.getElementById("img01");
+						var captionText = $("#caption")[0]; // document.getElementById("caption");
+						// modal.style.display = "block";
+					    // modalImg.src = $("#input")[0].files[0].toDataURL();
+					 //   captionText.innerHTML = this.alt;
+					 
+						var file = $("#input")[0].files[0];
+						  var reader  = new FileReader();
+						
+						  reader.addEventListener("load", function () {
+						  	console.log("Scr: " + modalImg.src);
+						  	console.log("Reader: " + reader.result);
+						    modalImg.src = reader.result;
+						    that.cropNext();
+						  }, false);
+						
+						  if (file) {
+						    reader.readAsDataURL(file);
+						  }
+					}, 100);
+				   
 				});
 				}, 100);
 			
@@ -115,6 +174,12 @@ sap.ui.define([
 			}
 			
 			
+		},
+		
+		cropNext: function() {
+			var cropper = new Cropper($("#img01")[0], {
+				aspectRatio: 4 / 4,
+			});
 		},
 		
 		test: function() {
