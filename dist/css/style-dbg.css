@@ -1,0 +1,232 @@
+/* colors
+background blue #eff4f9
+title bar blue: #aec9df
+highlighted selection blue: #d3e1ec
+graph blue: #d3e1ec
+
+*/
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+/* Grid */
+
+.grid-container {
+    position: relative;
+    margin: auto;
+    padding: 15px;
+    background: #d3e1ec;
+    border-radius: 6px;
+    width: 360px;
+    height: 360px;
+}
+
+.grid-row {
+    margin-bottom: 15px; }
+.grid-row:last-child {
+    margin-bottom: 0; }
+.grid-row:after {
+    content: "";
+    display: block;
+    clear: both; }
+
+.grid-cell {
+    width: 33%;
+    height: 100px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 3px;
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(152, 156, 169);
+    transition: 0.3s;
+}
+.grid-cell:last-child {
+    margin-right: 0; }
+
+.grid-cell.red {
+    background: #f66364;
+}
+
+.grid-cell.white {
+	background: #fafafa;
+    /*background: #bac1c4;*/
+}
+
+.grid-cell.blue {
+    background: #84caec;
+}
+
+.grid-cell.empty {
+    background: rgb(152, 156, 169);
+}
+
+.grid-cell.missing {
+	background: rgb(152, 156, 169);
+    /*background: #f5b04d;*/
+}
+
+.grid-icon {
+	color: #d3e1ec;
+	display: flex;
+	justify-content: center;
+}
+
+/* Config */
+
+.config-container {
+    position: relative;
+    margin: auto;
+    padding: 15px;
+    background: #d3e1ec;
+    border-radius: 6px;
+    width: 360px;
+    height: 360px;
+}
+
+.config-row {
+    margin-bottom: 15px; }
+.config-row:last-child {
+    margin-bottom: 0; }
+.config-row:after {
+    content: "";
+    display: block;
+    clear: both; }
+
+.config-cell {
+    width: 33%;
+    height: 100px;
+    margin-right: 15px;
+    float: left;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(152, 156, 169);
+    transition: 0.3s;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+.config-cell:last-child {
+    margin-right: 0; 
+	
+}
+
+.config-cell:hover {
+	background: #84caec;
+	transition: 0.3s;
+}
+
+.config-cell-text {
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.config-cell.set {
+    background: #84caec;
+}
+
+/* Modal */
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    /*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-container {
+	margin: auto;
+	width: 80%;
+	background-color: #fff;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    /*width: 80%;*/
+    /*max-width: 700px;*/
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes zoom {
+    from {transform: scale(0.1)} 
+    to {transform: scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}

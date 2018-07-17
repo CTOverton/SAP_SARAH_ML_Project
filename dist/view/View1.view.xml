@@ -1,0 +1,104 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="SAP_SARAH_ML_Project.controller.View1" displayBlock="true">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<Panel id="__panel0" headerText="Shelf View" expandable="true" expanded="true">
+				    <content>
+				        <HBox width="100%" id="__hbox0">
+			                <VBox width="100%" direction="Column" id="__vbox0">
+			                	<VBox class="grid-container" id="grid-container">
+				                	<HBox class="grid-row">
+				                		<VBox id="grid-cell-00" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-00" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-01" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-01" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-02" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-02" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                	</HBox>
+				                	<HBox class="grid-row">
+				                		<VBox id="grid-cell-10" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-10" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-11" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-11" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-12" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-12" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                	</HBox>
+				                	<HBox class="grid-row">
+				                		<VBox id="grid-cell-20" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-20" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-21" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-21" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                		<VBox id="grid-cell-22" class="grid-cell"><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" id="grid-cell-icon-22" class="grid-icon" src="sap-icon://overlay" size="4em"/></VBox>
+				                	</HBox>
+			                	</VBox>
+			                	<VBox id="configUI" visible="false">
+				                	<VBox class="config-container" id="config-container">
+									    <HBox class="config-row">
+									        <VBox id="config-cell-00" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-01" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-02" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									    </HBox>
+									    <HBox class="config-row">
+									        <VBox id="config-cell-10" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-11" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-12" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									    </HBox>
+									    <HBox class="config-row">
+									        <VBox id="config-cell-20" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-21" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									        <VBox id="config-cell-22" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
+									    </HBox>
+									</VBox>
+									<core:HTML id="configHTML" content="                       &lt;div&gt;                        &lt;label class=&quot;label&quot; data-toggle=&quot;tooltip&quot; title=&quot;Upload Config Image&quot;&gt;                         &lt;img id=&quot;config-image&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot; alt=&quot;Upload Config Image&quot;&gt;                      &lt;input type=&quot;file&quot; class=&quot;sr-only&quot; id=&quot;input&quot; name=&quot;image&quot; accept=&quot;image/*&quot;&gt;                  &lt;/label&gt;              &lt;/div&gt;              &lt;div&gt;                  &lt;img id=&quot;preview&quot;&gt;           &lt;/div&gt;                      "/>
+								</VBox>
+			                </VBox>
+			                <VBox width="100%" direction="Column" id="__vbox1">
+			                		<core:HTML id="fileHTML" content="&lt;div&gt;          &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;upload_file&quot; class=&quot;inputfile&quot; /&gt;          &lt;label for=&quot;upload_file&quot;id=&quot;upload_file_label&quot;class=&quot;sapMBtnDefault sapMBtnHoverable sapMBtnInner sapMBtnText sapMFocusable&quot; style=&quot;padding: 10px&quot;&gt;Classify&lt;/label&gt;          &lt;br&gt;&lt;img id=&quot;image&quot;&gt;          &lt;/div&gt;         "/>
+				                	
+			                        <!--<Button text="Classify" press="classify"/>-->
+			                </VBox>
+				        </HBox>
+				    </content>
+				    </Panel>
+				    <Panel id="__pane20" headerText="Settings" expandable="true" expanded="false">
+				    <content>
+				        <HBox width="100%">
+			                <Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
+			                <Button text="Show/Hide Config" width="200px" id="__button1" press="showhideConfig"/>
+			                <Button text="Test" width="100px" id="__button2" press="test"/>
+				        </HBox>
+				        <Table id="resultTable" items="{         path: '/results',         sorter: {          path: 'score',          descending: 'true'         }        }">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Image Classification Result"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="Label"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Score"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier title="{label}"/>
+                                        <Text text="{score}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+				    </content>
+				    </Panel>
+				    <core:HTML content="&lt;img id=&quot;myImg&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot; alt=&quot;Northern Lights, Norway&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;"/>
+				    <HBox id="myModal" class="modal" visible="false">
+				    	<HBox class="modal-container">
+				    		<VBox>
+					    		<core:HTML content="&lt;img class=&quot;modal-content&quot; id=&quot;img01&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot;&gt;"/>
+					    		<HBox>
+					    			<Button text="Cancel" width="100px" id="__button_cancel" press="closethis"/>
+					    			<Button text="Crop" width="100px" id="__button_crop" type="Emphasized"/>
+					    		</HBox>
+				    		</VBox>
+				    	</HBox>
+				    </HBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
