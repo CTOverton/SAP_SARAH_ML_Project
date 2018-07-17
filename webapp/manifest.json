@@ -14,7 +14,6 @@
 			"version": "1.40.12"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -33,10 +32,8 @@
 		"supportedThemes": [
 			"sap_hcb",
 			"sap_belize"
-
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "SAP_SARAH_ML_Project.view.View1",
@@ -67,9 +64,15 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }
