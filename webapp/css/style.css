@@ -15,6 +15,10 @@ graph blue: #d3e1ec
 	z-index: -1;
 }
 
+.classifyBtn {
+	pointer-events: all;
+}
+
 /* Grid */
 
 .grid-container {

@@ -61,7 +61,7 @@
 								<HBox><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://decline" size="2em"/><Text text="Missing"/></HBox>
 							</VBox>
 			                <VBox width="100%" direction="Column" id="__vbox1">
-			                		<core:HTML id="fileHTML" content="&lt;div&gt;          &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;upload_file&quot; class=&quot;inputfile&quot; /&gt;          &lt;label for=&quot;upload_file&quot;id=&quot;upload_file_label&quot;class=&quot;sapMBtnDefault sapMBtnHoverable sapMBtnInner sapMBtnText sapMFocusable&quot; style=&quot;padding: 10px&quot;&gt;Classify&lt;/label&gt;          &lt;br&gt;&lt;img id=&quot;image&quot;&gt;          &lt;/div&gt;         "/>
+			                		<core:HTML id="fileHTML" content="&lt;div&gt;          &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;upload_file&quot; class=&quot;inputfile&quot; /&gt;          &lt;label for=&quot;upload_file&quot;id=&quot;upload_file_label&quot;class=&quot;classifyBtn sapMBtnDefault sapMBtnHoverable sapMBtnInner sapMBtnText sapMFocusable&quot; style=&quot;padding: 10px&quot;&gt;Classify&lt;/label&gt;          &lt;br&gt;&lt;img id=&quot;image&quot;&gt;          &lt;/div&gt;         "/>
 				                	
 			                        <!--<Button text="Classify" press="classify"/>-->
 			                </VBox>
