@@ -89,10 +89,12 @@
 				    <HBox id="myModal" class="modal" visible="false">
 				    	<HBox class="modal-container">
 				    		<VBox>
-					    		<core:HTML content="&lt;img class=&quot;modal-content&quot; id=&quot;img01&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot;&gt;"/>
+				    			<HBox class="">
+				    				<core:HTML content="&lt;img class=&quot;modal-content&quot; id=&quot;img01&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot;&gt;"/>
+					    		</HBox>
 					    		<HBox>
 					    			<Button text="Cancel" width="100px" id="__button_cancel" press="closethis"/>
-					    			<Button text="Crop" width="100px" id="__button_crop" type="Emphasized"/>
+					    			<Button text="Crop" width="100px" id="__button_crop" press="cellCrop" type="Emphasized"/>
 					    		</HBox>
 				    		</VBox>
 				    	</HBox>

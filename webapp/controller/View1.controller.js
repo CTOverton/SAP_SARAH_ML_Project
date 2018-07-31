@@ -11,6 +11,31 @@ var cellValues = [
 ];
 var configured = "false";
 
+var cropper;
+
+var cropData = {
+	0: {
+		0:null,
+		1:null,
+		2:null
+	},
+	1: {
+		0:null,
+		1:null,
+		2:null
+	},
+	2: {
+		0:null,
+		1:null,
+		2:null
+	}
+};
+	
+var currentCell = {
+	cell:null,
+	row:null,
+	col:null
+};
 
 // ==== SAP UI5 Standard ==== //
 sap.ui.define([
@@ -109,6 +134,10 @@ sap.ui.define([
 		
 		closethis: function() {
 			this.getView().byId("myModal").setVisible(false);
+			
+			if (cropper) {
+				cropper.destroy();
+			}
 		},
 		
 		configUI: function() {
@@ -116,7 +145,14 @@ sap.ui.define([
 		},
 		
 		cellCrop: function() {
-			console.log("test");
+			var row = currentCell.row;
+			var col = currentCell.col;
+			
+			cropData[row][col] = cropper.getData(true);
+			
+			currentCell.cell.addStyleClass("config-cell set");
+			currentCell.cell.getItems()[0].setText("Edit");
+			this.closethis();
 		},
 		
 		showhideConfig: function() {
@@ -140,7 +176,10 @@ sap.ui.define([
 				   //$(this).addStyleClass(".config-cell set");
 				   
 				   var cell = that.getView().byId("config-cell-"+this.id.split("")[24]+""+this.id.split("")[25]);
-				   cell.addStyleClass("config-cell set");
+				   
+				   currentCell.cell = cell;
+				   currentCell.row = this.id.split("")[24];
+				   currentCell.col = this.id.split("")[25];
 				   
 				   that.getView().byId("myModal").setVisible(true);
 					setTimeout(function() {
@@ -154,8 +193,8 @@ sap.ui.define([
 						  var reader  = new FileReader();
 						
 						  reader.addEventListener("load", function () {
-						  	console.log("Scr: " + modalImg.src);
-						  	console.log("Reader: " + reader.result);
+						  	// console.log("Scr: " + modalImg.src);
+						  	// console.log("Reader: " + reader.result);
 						    modalImg.src = reader.result;
 						    that.cropNext();
 						  }, false);
@@ -177,9 +216,17 @@ sap.ui.define([
 		},
 		
 		cropNext: function() {
-			var cropper = new Cropper($("#img01")[0], {
+			cropper = new Cropper($("#img01")[0], {
 				aspectRatio: 4 / 4,
 			});
+			setTimeout(function() {
+				var row = currentCell.row;
+				var col = currentCell.col;
+				
+				if (cropData[row][col]) {
+	                cropper.setData(cropData[row][col]);
+	            }
+			}, 100);
 		},
 		
 		test: function() {
