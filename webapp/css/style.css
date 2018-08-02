@@ -79,6 +79,18 @@ graph blue: #d3e1ec
 	justify-content: center;
 }
 
+/* Legend */
+
+.legend .grid-icon {
+	margin: 5px;
+	width: 40px;
+}
+
+.legend-text {
+	display: flex;
+	flex-direction: column;
+}
+
 /* Config */
 
 .config-container {

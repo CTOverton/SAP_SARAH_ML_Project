@@ -88,14 +88,17 @@ sap.ui.define([
 		// When the window has rendered the view
 		onAfterRendering: function() {
 			var that = this;
-            var fileInput = $("#upload_file")[0]; // JQuery method of getting element instead of: var fileInput = document.getElementById("upload_file");
+            // var fileInput = $("#upload_file")[0]; // JQuery method of getting element instead of: var fileInput = document.getElementById("upload_file");
             // fileInput.addEventListener("change", this.onChange); // causes the "onChange" event to run when fileInput is changed
             
-            fileInput.addEventListener("change", function(){
-            	var label = $("#upload_file_label")[0];
-            	label.innerHTML = "Processing: " + fileInput.files[0].name;                      
-			    that.classify();
-			});
+            var fileInput = $("#input")[0];
+            fileInput.addEventListener("change", this.onChangeConfig); // causes the "onChange" event to run when fileInput is changed
+            
+   //         fileInput.addEventListener("change", function(){
+   //         	var label = $("#upload_file_label")[0];
+   //         	label.innerHTML = "Processing: " + fileInput.files[0].name;                      
+			//     that.classify();
+			// });
 			
 			
 				// Get the modal
@@ -105,17 +108,17 @@ sap.ui.define([
 				//var img = $("#myImg")[0]; //document.getElementById('myImg');
 				
 	
-				$("#myImg")[0].addEventListener("click", function() {
+				// $("#myImg")[0].addEventListener("click", function() {
 					
-					that.getView().byId("myModal").setVisible(true);
-					setTimeout(function() {
-						var modalImg = $("#img01")[0]; //document.getElementById("img01");
-						var captionText = $("#caption")[0]; // document.getElementById("caption");
-						// modal.style.display = "block";
-					    // modalImg.src = this.src;
-					 //   captionText.innerHTML = this.alt;
-					}, 100);
-				});
+				// 	that.getView().byId("myModal").setVisible(true);
+				// 	setTimeout(function() {
+				// 		var modalImg = $("#img01")[0]; //document.getElementById("img01");
+				// 		var captionText = $("#caption")[0]; // document.getElementById("caption");
+				// 		// modal.style.display = "block";
+				// 	    // modalImg.src = this.src;
+				// 	 //   captionText.innerHTML = this.alt;
+				// 	}, 100);
+				// });
 				
 				// Get the <span> element that closes the modal
 				//var span = $("#close")[0]; // document.getElementsByClassName("close")[0];
@@ -166,6 +169,29 @@ sap.ui.define([
 			
 		},
 		
+		update: function() {
+			let that = this;
+			
+			this.test().then(function(message) {
+				console.log(message);
+				that.zipImg().then(function(message) {
+					console.log(message);
+					that.classify();
+				});
+			});
+			
+			// var begin = async function() {
+			// 	var cropping = await that.test();
+			// 	console.log(cropping);
+			// 	var zipping = await that.zipImg();
+			// 	console.log(zipping);
+			// 	that.classify();
+			// }
+			
+			// begin();
+			
+		},
+		
 		cellCrop: function() {
 			var row = currentCell.row;
 			var col = currentCell.col;
@@ -189,7 +215,6 @@ sap.ui.define([
 				config.setVisible(true);
 				
 				setTimeout(function() {
-					$("#input")[0].addEventListener("change", this.onChangeConfig);
 				
 				$(".config-cell").on("click", function() {
 				   // console.log($(this));
@@ -259,7 +284,7 @@ sap.ui.define([
             reader.onload = function(){
                 var dataUrl = reader.result;
                 // set image area
-                var image = $("#config-image")[0];			//var image =  document.getElementById("image");
+                var image = $("#img01")[0];			//var image =  document.getElementById("image");
                 image.src = dataUrl;
             };
             // read content
@@ -357,66 +382,84 @@ sap.ui.define([
 		},
 		
 		test: function() {
-			// this.getView().byId("config-cell-00-img-container").setVisible(true);
+			return new Promise(function(resolve, reject) {
+				// this.getView().byId("config-cell-00-img-container").setVisible(true);
 			
-			// var grid = $("#config-img-00")[0];
-			
-			// grid.src = "https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg?resize=640%2C426";
-			
-			cropper = new Cropper($("#img01")[0]);
-			setTimeout(function() {
+				// var grid = $("#config-img-00")[0];
 				
-				for (let row=0; row<3; row++) {
-					for (let col=0; col<3; col++) {
-						if (cropData[row][col]) {
-			                cropper.setData(cropData[row][col]);
-			                
-			                var canvas = cropper.getCroppedCanvas();
-			                
+				// grid.src = "https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg?resize=640%2C426";
+				
+				cropper = new Cropper($("#img01")[0]);
+				setTimeout(function() {
+					
+					let dataSetActions = [];
+					let addDataPromise = function(row,col){
+					    var promiseData = new Promise(function(resolve, reject) {
+					    	var canvas = cropper.getCroppedCanvas();
+				                
 			                //cropSrc[row][col].src = 
 			                canvas.toBlob(function (blob) {
 			                	cropSrc[row][col].src = blob;
+			                	resolve(row + "" + col + " Promised");
 			                });
-			            }
+					    });
+					    return promiseData.then(x => {
+					        console.log(x)
+					    })
 					}
-				}
-				if (cropper) {
-					cropper.destroy();
-				}
-			}, 100);
-			
-			
+					
+					for (let row=0; row<3; row++) {
+						for (let col=0; col<3; col++) {
+							if (cropData[row][col]) {
+				                cropper.setData(cropData[row][col]);
+				                dataSetActions.push(addDataPromise(row,col))
+				            }
+						}
+					}
+					
+					Promise.all(dataSetActions).then(x => {
+						if (cropper) {
+							cropper.destroy();
+						}
+						resolve('Cropping Complete');
+					});
+					
+				}, 100);
+			});
 		},
 		
 		zipImg: function() {
-			var zip = new JSZip();
+			return new Promise(function(resolve, reject) {
+				var zip = new JSZip();
 
-			let fileAddActions = [];
-			let addFilePromise = function(filename){
-			    zip.file(fileName, cropSrc[row][col].src);
-			
-			    return zip.file(fileName).async("blob").then(x => {
-			        console.log(x)
-			    })
-			}
-			
-			
-			for (var row = 0; row < 3; row++) { // Loop for rows
-			    for (var col = 0; col < 3; col++) { // Loop for cols
-			        if (cropSrc[row][col].src) { // If data for cropped img exists
-			            var fileName = row + "" + col + ".png";
-			            fileAddActions.push(addFilePromise(fileName))
-			        }
-			    }
-			}
-			
-			Promise.all(fileAddActions).then(x => {
-			    console.log("DONE")
-			    zip.generateAsync({type:"blob"}).then(function (content) {
-			        //window.location = "data:application/zip;base64," + base64;
-			        postZip = content;
-			    });
-			})
+				let fileAddActions = [];
+				let addFilePromise = function(filename){
+				    zip.file(fileName, cropSrc[row][col].src);
+				
+				    return zip.file(fileName).async("blob").then(x => {
+				        console.log(x)
+				    })
+				}
+				
+				
+				for (var row = 0; row < 3; row++) { // Loop for rows
+				    for (var col = 0; col < 3; col++) { // Loop for cols
+				        if (cropSrc[row][col].src) { // If data for cropped img exists
+				            var fileName = row + "" + col + ".png";
+				            fileAddActions.push(addFilePromise(fileName))
+				        }
+				    }
+				}
+				
+				Promise.all(fileAddActions).then(x => {
+				    console.log("DONE")
+				    zip.generateAsync({type:"blob"}).then(function (content) {
+				        //window.location = "data:application/zip;base64," + base64;
+				        postZip = content;
+				        resolve('Zip Created');
+				    });
+				})
+			});
 		},
 		
         classify: function(oEvent) {
@@ -450,8 +493,8 @@ sap.ui.define([
 		                    
 		                    that.updateUI();
 		                    
-		                    var label = $("#upload_file_label")[0];
-            				label.innerHTML = "Classify";
+		              //      var label = $("#upload_file_label")[0];
+            				// label.innerHTML = "Classify";
 		                }
 			            });
 			
