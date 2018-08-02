@@ -11,6 +11,8 @@ var cellValues = [
 ];
 var configured = "false";
 
+var currentImg;
+
 var cropper;
 
 var cropData = {
@@ -30,12 +32,32 @@ var cropData = {
 		2:null
 	}
 };
+
+var cropSrc = {
+	0: {
+		0:{src:null},
+		1:{src:null},
+		2:{src:null}
+	},
+	1: {
+		0:{src:null},
+		1:{src:null},
+		2:{src:null}
+	},
+	2: {
+		0:{src:null},
+		1:{src:null},
+		2:{src:null}
+	}
+};
 	
 var currentCell = {
 	cell:null,
 	row:null,
 	col:null
 };
+
+var postZip;
 
 // ==== SAP UI5 Standard ==== //
 sap.ui.define([
@@ -183,7 +205,7 @@ sap.ui.define([
 				   
 				   that.getView().byId("myModal").setVisible(true);
 					setTimeout(function() {
-						var modalImg = $("#img01")[0]; //document.getElementById("img01");
+						var modalImg = $("#img01")[0]; // document.getElementById("img01");
 						var captionText = $("#caption")[0]; // document.getElementById("caption");
 						// modal.style.display = "block";
 					    // modalImg.src = $("#input")[0].files[0].toDataURL();
@@ -193,9 +215,10 @@ sap.ui.define([
 						  var reader  = new FileReader();
 						
 						  reader.addEventListener("load", function () {
-						  	// console.log("Scr: " + modalImg.src);
+						  	// console.log("src: " + modalImg.src);
 						  	// console.log("Reader: " + reader.result);
 						    modalImg.src = reader.result;
+						    currentImg = reader.result;
 						    that.cropNext();
 						  }, false);
 						
@@ -216,9 +239,7 @@ sap.ui.define([
 		},
 		
 		cropNext: function() {
-			cropper = new Cropper($("#img01")[0], {
-				aspectRatio: 4 / 4,
-			});
+			cropper = new Cropper($("#img01")[0]);
 			setTimeout(function() {
 				var row = currentCell.row;
 				var col = currentCell.col;
@@ -227,14 +248,6 @@ sap.ui.define([
 	                cropper.setData(cropData[row][col]);
 	            }
 			}, 100);
-		},
-		
-		test: function() {
-			this.getView().byId("config-cell-00-img-container").setVisible(true);
-			
-			var grid = $("#config-img-00")[0];
-			
-			grid.src = "https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg?resize=640%2C426";
 		},
 		
 		// Update the preview image to be visible when image has been uploaded
@@ -343,18 +356,67 @@ sap.ui.define([
 			});
 		},
 		
+		test: function() {
+			// this.getView().byId("config-cell-00-img-container").setVisible(true);
+			
+			// var grid = $("#config-img-00")[0];
+			
+			// grid.src = "https://i2.wp.com/beebom.com/wp-content/uploads/2016/01/Reverse-Image-Search-Engines-Apps-And-Its-Uses-2016.jpg?resize=640%2C426";
+			
+			cropper = new Cropper($("#img01")[0]);
+			setTimeout(function() {
+				
+				for (let row=0; row<3; row++) {
+					for (let col=0; col<3; col++) {
+						if (cropData[row][col]) {
+			                cropper.setData(cropData[row][col]);
+			                
+			                var canvas = cropper.getCroppedCanvas();
+			                
+			                //cropSrc[row][col].src = 
+			                canvas.toBlob(function (blob) {
+			                	cropSrc[row][col].src = blob;
+			                });
+			            }
+					}
+				}
+				if (cropper) {
+					cropper.destroy();
+				}
+			}, 100);
+			
+			
+		},
+		
 		zipImg: function() {
 			var zip = new JSZip();
-			var input = $("#upload_file")[0];
-			var img = zip.folder("images");
-            var imgData = input.files[0];
-			img.file("test.png", imgData, {base64: true});
-			
-			zip.generateAsync({type:"base64"}).then(function (base64) {window.location = "data:application/zip;base64," + base64;});
 
-			// zip.folder("images").forEach(function (relativePath, file){
-			//     console.log("iterating over", relativePath);
-			// });
+			let fileAddActions = [];
+			let addFilePromise = function(filename){
+			    zip.file(fileName, cropSrc[row][col].src);
+			
+			    return zip.file(fileName).async("blob").then(x => {
+			        console.log(x)
+			    })
+			}
+			
+			
+			for (var row = 0; row < 3; row++) { // Loop for rows
+			    for (var col = 0; col < 3; col++) { // Loop for cols
+			        if (cropSrc[row][col].src) { // If data for cropped img exists
+			            var fileName = row + "" + col + ".png";
+			            fileAddActions.push(addFilePromise(fileName))
+			        }
+			    }
+			}
+			
+			Promise.all(fileAddActions).then(x => {
+			    console.log("DONE")
+			    zip.generateAsync({type:"blob"}).then(function (content) {
+			        //window.location = "data:application/zip;base64," + base64;
+			        postZip = content;
+			    });
+			})
 		},
 		
         classify: function(oEvent) {
@@ -364,10 +426,12 @@ sap.ui.define([
 				.then(function(token) {
 				    // Code depending on result
 				    var input = $("#upload_file")[0];
+				    
 
-		            //prepare file for api call
-		            var data = new FormData();
-		            data.append("files", input.files[0], input.files[0].name);
+		            // //prepare file for api call
+		            // var data = new FormData();
+		            // // data.append("files", input.files[0], input.files[0].name);
+		            // data.append("files", postZip, "classify.zip");
 		
 		            var xhr = new XMLHttpRequest();
 		            xhr.withCredentials = true;
@@ -399,10 +463,21 @@ sap.ui.define([
 		            //set busy indicator before send request to ML API
 		            that.getView().byId("grid-container").setBusy(true);
 		
+		            
+		            
+		            //prepare file for api call
+		            var data = new FormData();
+		            // data.append("files", input.files[0], input.files[0].name);
+		            data.append("files", postZip, "classify.zip");//.then(function() {
+		            // 	xhr.send(data);
+		            // });
+		            
 		            //sending request
 		            $.sap.delayedCall(2000, this, function(){
 		                xhr.send(data);
 		            });
+		            
+		            
 				})
 			  .catch(function() {
 			    // An error occurred

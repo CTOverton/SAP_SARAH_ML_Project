@@ -59,6 +59,8 @@
 			                <Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
 			                <Button text="Show/Hide Config" width="200px" id="__button1" press="showhideConfig"/>
 			                <Button text="Test" width="100px" id="__button2" press="test"/>
+			                <Button text="Zip" width="100px" id="__button3" press="zipImg"/>
+			                <Button text="Classify Zip" width="100px" id="__button4" press="classify"/>
 				        </HBox>
 				        <Table id="resultTable" items="{         path: '/results',         sorter: {          path: 'score',          descending: 'true'         }        }">
                             <headerToolbar>
@@ -86,6 +88,8 @@
 				    </content>
 				    </Panel>
 				    <core:HTML content="&lt;img id=&quot;myImg&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot; alt=&quot;Northern Lights, Norway&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;"/>
+				    <core:HTML content="&lt;img class=&quot;imagetest&quot; id=&quot;img06&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot;&gt;"/>
+				    
 				    <HBox id="myModal" class="modal" visible="false">
 				    	<HBox class="modal-container">
 				    		<VBox>
