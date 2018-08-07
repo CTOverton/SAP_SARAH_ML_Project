@@ -15,10 +15,6 @@ graph blue: #d3e1ec
 	z-index: -1;
 }
 
-.classifyBtn {
-	pointer-events: all;
-}
-
 /* Grid */
 
 .grid-container {
@@ -81,18 +77,6 @@ graph blue: #d3e1ec
 	color: #d3e1ec;
 	display: flex;
 	justify-content: center;
-}
-
-/* Legend */
-
-.legend .grid-icon {
-	margin: 5px;
-	width: 40px;
-}
-
-.legend-label {
-	white-space: nowrap;
-	padding: 10px;
 }
 
 /* Config */
@@ -177,7 +161,7 @@ graph blue: #d3e1ec
 
 .modal-container {
 	margin: auto;
-	width: 40%;
+	width: 80%;
 	background-color: #fff;
 	border-radius: 5px;
 	display: flex;
@@ -190,7 +174,6 @@ graph blue: #d3e1ec
     display: block;
     /*width: 80%;*/
     /*max-width: 700px;*/
-    max-width: 100%;
 }
 
 /* Caption of Modal Image */

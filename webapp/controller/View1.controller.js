@@ -7,9 +7,9 @@ var empty_icon = "circle-task";
 var missing_icon = "decline";
 var reds, whites, blues, emptys, missings = 0;
 var cellValues = [
-	["R","W","B"],
-	["R","W","B"],
-	["R","W","B"]
+	["R","E","B"],
+	["E","R","W"],
+	["W","B","M"]
 ];
 var configured = "false";
 
@@ -74,7 +74,8 @@ sap.ui.define([
 		
 		// When the program starts
 		onInit: function() {
-			this.randomizeData(); // Randomize the data
+			//this.randomizeData(); // Randomize the data
+			this.updateUI();
 			test = this;
 		},
 		
@@ -386,7 +387,6 @@ sap.ui.define([
 							reader.readAsDataURL(file);
 						}
 					}, 100);
-				   
 				});
 				}, 100);
 			
