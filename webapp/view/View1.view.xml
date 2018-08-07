@@ -42,64 +42,75 @@
 									        <VBox id="config-cell-22" class="config-cell"><Text class="config-cell-text" text="Set Crop"/></VBox>
 									    </HBox>
 									</VBox>
-									<core:HTML id="configHTML" content="
-					                	&lt;div&gt;
-					                		&lt;label class=&quot;label&quot; data-toggle=&quot;tooltip&quot; title=&quot;Upload Config Image&quot;&gt;
-					                			&lt;img id=&quot;config-image&quot; src=&quot;https://avatars0.githubusercontent.com/u/3456749?s=160&quot; alt=&quot;Upload Config Image&quot;&gt;
-									            &lt;input type=&quot;file&quot; class=&quot;sr-only&quot; id=&quot;input&quot; name=&quot;image&quot; accept=&quot;image/*&quot;&gt;
-									        &lt;/label&gt;
-									    &lt;/div&gt;
-									    &lt;div&gt;
-								        	&lt;img id=&quot;preview&quot;&gt;
-										&lt;/div&gt;
-				                	"/>
 								</VBox>
 			                </VBox>
 			                <VBox class="legend" width="100%">
-			                	<HBox><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="2em"/><Text text="Bearing"/></HBox>
-								<HBox><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://circle-task" size="2em"/><Text text="Empty Crate"/></HBox>
-								<HBox><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://decline" size="2em"/><Text text="Missing"/></HBox>
+		                		<HBox><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://overlay" size="2em"/>		<Text class="legend-label" text="Bearing"/></HBox>
+								<HBox><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://circle-task" size="2em"/>	<Text class="legend-label" text="Empty Crate"/></HBox>
+								<HBox><sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" class="grid-icon" src="sap-icon://decline" size="2em"/>		<Text class="legend-label" text="Missing"/></HBox>
 							</VBox>
 			                <VBox width="100%" direction="Column" id="__vbox1">
-			                		<core:HTML id="fileHTML" content="&lt;div&gt;          &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;upload_file&quot; class=&quot;inputfile&quot; /&gt;          &lt;label for=&quot;upload_file&quot;id=&quot;upload_file_label&quot;class=&quot;classifyBtn sapMBtnDefault sapMBtnHoverable sapMBtnInner sapMBtnText sapMFocusable&quot; style=&quot;padding: 10px&quot;&gt;Classify&lt;/label&gt;          &lt;br&gt;&lt;img id=&quot;image&quot;&gt;          &lt;/div&gt;         "/>
-				                	
-			                        <!--<Button text="Classify" press="classify"/>-->
+			                	<VBox height="50%">
+			                		<core:HTML id="configHTML" content="
+										&lt;div&gt;
+											&lt;label class=&quot;label&quot; data-toggle=&quot;tooltip&quot; title=&quot;Upload Config Image&quot;&gt;
+												&lt;input type=&quot;file&quot; class=&quot;sr-only&quot; id=&quot;input&quot; name=&quot;image&quot; accept=&quot;image/*&quot;&gt;
+											&lt;/label&gt;
+										&lt;/div&gt;
+										&lt;div&gt;
+											&lt;img id=&quot;preview&quot;&gt;
+										&lt;/div&gt;
+									"/>
+			                        <Button text="Update" width="100px" type="Emphasized" press="update"/>
+			                        <Button text="Show/Hide Config" width="200px" press="showhideConfig"/>
+			                	</VBox>
+			                	<HBox height="50%">
+			                		<HBox width="150px" height="150px">
+							        	<core:HTML content="&lt;img class=&quot;modal-content&quot; id=&quot;img02&quot; src=&quot;https://drive.google.com/uc?id=17y1j0zA8IGRTv7cpSkBp2QIH4P7ayeBP&quot;&gt;"/>
+							        </HBox>
+			                	</HBox>
 			                </VBox>
 				        </HBox>
 				    </content>
 				    </Panel>
 				    <Panel id="__pane20" headerText="Settings" expandable="true" expanded="false">
-				    <content>
-				        <HBox width="100%">
-			                <Button text="Randomize" width="100px" id="__button0" press="randomizeData"/>
-			                <Button text="Show/Hide Config" width="200px" id="__button1" press="showhideConfig"/>
-			                <Button text="Test" width="100px" id="__button2" press="test"/>
-				        </HBox>
-				        <Table id="resultTable" items="{         path: '/results',         sorter: {          path: 'score',          descending: 'true'         }        }">
-                            <headerToolbar>
-                                <Toolbar>
-                                    <Title text="Image Classification Result"/>
-                                </Toolbar>
-                            </headerToolbar>
-                            <columns>
-                                <Column>
-                                    <Text text="Label"/>
-                                </Column>
-                                <Column>
-                                    <Text text="Score"/>
-                                </Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem>
-                                    <cells>
-                                        <ObjectIdentifier title="{label}"/>
-                                        <Text text="{score}"/>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-				    </content>
+				    	<VBox>
+				    		<Button text="Randomize" width="100px" press="settings_randomizeData"/>
+				    		<HBox>
+				    			<Button text="Set Image" width="100px" press="settings_setImg"/>
+				    			<ComboBox>
+								    <items>
+								        <core:ListItem text="Factory Shelf Demo 1"/>
+								        <core:ListItem text="Factory Shelf Demo 1.1"/>
+								        <core:ListItem text="Factory Shelf Demo 2"/>
+								        <core:ListItem text="Table Demo"/>
+							        </items>
+								</ComboBox>
+				    		</HBox>
+				    		<HBox>
+				    			<Button text="Set Crop" width="100px" press="settings_setCrop"/>
+				    			<ComboBox xmlns:sap.ui.core="sap.ui.core" id="settings_crop">
+								    <items>
+								        <core:ListItem text="Factory Shelf Demo 1, 1.1, 2"/>
+								        <core:ListItem text="Table Demo"/>
+							        </items>
+								</ComboBox>
+				    		</HBox>
+				    	</VBox>
 				    </Panel>
+				    <HBox id="myModal" class="modal" visible="false">
+				    	<HBox class="modal-container">
+				    		<VBox>
+				    			<HBox>
+				    				<core:HTML content="&lt;img class=&quot;modal-content&quot; id=&quot;img01&quot; src=&quot;https://drive.google.com/uc?id=17y1j0zA8IGRTv7cpSkBp2QIH4P7ayeBP&quot;&gt;"/>
+					    		</HBox>
+					    		<HBox>
+					    			<Button text="Cancel" width="100px" id="__button_cancel" press="closethis"/>
+					    			<Button text="Crop" width="100px" id="__button_crop" press="cellCrop" type="Emphasized"/>
+					    		</HBox>
+				    		</VBox>
+				    	</HBox>
+				    </HBox>
 				</content>
 			</Page>
 		</pages>
