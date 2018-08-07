@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Cropper.js</title>
+  <link rel="stylesheet" href="../dist/cropper.css">
+  <style>
+    .container {
+      max-width: 640px;
+      margin: 20px auto;
+    }
+
+    img {
+
+        max-width: 100%;
+    }
+
+      .thing {
+          width: 100px;
+          height: 50px;
+      }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Multiple Croppers</h1>
+    <h3>Cropper</h3>
+
+    <img class="rounded" id="avatar" src="https://avatars0.githubusercontent.com/u/3456749?s=160" alt="avatar">
+
+      <button type="button" class="btn btn-primary" id="crop">Crop</button>
+
+      <div class="thing">
+          <img class="cropimg" src="../docs/images/picture.jpg" alt="Picture">
+      </div>
+
+      <button type="button" id="config-menu">Configure</button>
+      <div>
+          <label class="label" data-toggle="tooltip" title="Upload Config Image">
+              <img id="config-image" src="https://avatars0.githubusercontent.com/u/3456749?s=160" alt="Upload Config Image">
+              <input type="file" class="sr-only" id="input" name="image" accept="image/*">
+          </label>
+      </div>
+
+      <div>
+          <img id="preview">
+      </div>
+
+      <div>
+          <div class="grid-container-background">
+              <div class="grid-container" id="grid-container">
+                  <div class="grid-row">
+                      <div class="grid-cell red"><p class="label">R</p></div>
+                      <div class="grid-cell"></div>
+                      <div class="grid-cell blue"><p class="label">B</p></div>
+                  </div>
+                  <div class="grid-row">
+                      <div class="grid-cell"></div>
+                      <div class="grid-cell white"><p class="label">W</p></div>
+                      <div class="grid-cell"></div>
+                  </div>
+                  <div class="grid-row">
+                      <div class="grid-cell"></div>
+                      <div class="grid-cell"><p class="label">B</p></div>
+                      <div class="grid-cell blue"><p class="label">B</p></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="../dist/cropper.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+        var image = document.getElementById('image');
+        var avatar = document.getElementById('avatar');
+        var cropper;
+
+        var images = document.querySelectorAll('.cropimg');
+        var croppers = [];
+
+        for (var i = 0; i < images.length; i++) {
+            croppers.push(new Cropper(images[i], {
+                aspectRatio: 4 / 4,
+            }));
+        }
+
+        cropper = croppers[0];
+
+
+        document.getElementById('crop').addEventListener('click', function () {
+            var canvas;
+
+
+            if (cropper) {
+                canvas = cropper.getCroppedCanvas({
+                    width: 400,
+                    height: 400,
+                });
+            }
+
+            avatar.src = canvas.toDataURL();
+        });
+
+    });
+  </script>
+</body>
+</html>

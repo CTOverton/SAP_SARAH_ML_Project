@@ -1,0 +1,57 @@
+<mvc:View
+        controllerName="SAP_SARAH_ML_Project.controller.Main"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:mvc="sap.ui.core.mvc"
+        displayBlock="true"
+        xmlns:l="sap.ui.layout"
+        xmlns:u="sap.ui.unified"
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m">
+    <App id="idAppControl">
+        <pages>
+            <Page title="{i18n>title}">
+                <content>
+                    <l:VerticalLayout>
+                        <core:HTML
+                                id="fileHTML"
+                                content='&lt;div&gt;&lt;input type=&quot;file&quot; id=&quot;previewImg&quot;&gt;&lt;br&gt;&lt;img id=&quot;image&quot;&gt;&lt;/div&gt;'/>
+                        <Button
+                                text="Classify Image"
+                                press="onClassify"/>
+                        <Table
+                                id="resultTable"
+                                items="{
+								path: '/results',
+								sorter: {
+									path: 'score',
+									descending: 'true'
+								}
+							}">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Image Classification Result"/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="Label"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Score"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <ObjectIdentifier title="{label}"/>
+                                        <Text text="{score}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </l:VerticalLayout>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

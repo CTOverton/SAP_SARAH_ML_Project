@@ -13,9 +13,13 @@ import configparser
 
 def crop(imgFile, lnX, lnY, exportPath, batchName):
     imgSource = Image.open(imgFile.filename)  # Open the image source
+    print("Cropping Source: ")
     print(imgSource)
     imgName = os.path.splitext(os.path.basename(imgFile.filename))[0]
-    print(imgName)
+    print("Image name: " + imgName)
+
+    # Rotate 180
+    # imgSource = imgSource.rotate(180)
 
     for i in range(3):  # Loop for rows
         for j in range(3):  # Loop for cols
@@ -24,7 +28,6 @@ def crop(imgFile, lnX, lnY, exportPath, batchName):
 
             # Set crop bounds [aka box] (LeftEdgeX, TopEdgeY,RightEdgeX, BottomEdgeY)
             box = (int(lnX[j]), int(lnY[i]), int(lnX[j + 1]), int(lnY[i + 1]))
-
 
             # Create new image with crop
             img = Image.new('RGB', (imgWidth, imgHeight), 255)  # (mode, (width, height), color)
@@ -49,6 +52,7 @@ def load_images_from_folder(folder):
     images = []
     for filename in os.listdir(folder):
         if (filename.endswith(".jpg") or filename.endswith(".JPG") or filename.endswith(".png")):
+        # if (filename.endswith(".JPG")):
             img = Image.open(os.path.join(folder, filename))
             if img is not None:
                 images.append(img)
@@ -73,19 +77,13 @@ def batch(sourceDir, exportDir, batchName):
     lnX = [lnX1, lnX2, lnX3, lnX4]
     lnY = [lnY1, lnY2, lnY3, lnY4]
 
+    print("Loading " + batchName + " config: ")
     print(lnX)
     print(lnY)
-
-    # sourceDir = sourceDir + '/*.jpg'
-    print(sourceDir)
 
     # Create a list of source images
     imgFiles = []
     imgFiles.extend(load_images_from_folder(sourceDir))  # Get all images from source directory
-
-    print(imgFiles)
-
-
 
     # Loop for all images
     for c, value in enumerate(imgFiles):  # c is the loop count, img is the image from the list
@@ -126,8 +124,9 @@ if __name__ == '__main__':
     batchNames.extend(next(os.walk(sourceDir + '.'))[1])
 
     for x in range(len(batchNames)):
-        print(sourceDir + batchNames[x])
+        print("Processing: " + batchNames[x])
         batch(sourceDir + batchNames[x], exportDir, batchNames[x])
+        print("========================================")
     #
     # print(batches)
     #

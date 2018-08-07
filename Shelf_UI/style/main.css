@@ -189,8 +189,6 @@ width: 140px;
     margin-top: 40px;
     position: relative;
     padding: 15px;
-    /*cursor: default;*/
-    /*touch-action: none;*/
     background: #bdbfca;
     border-radius: 6px;
     width: 360px;
@@ -199,8 +197,7 @@ width: 140px;
 }
 
 .grid-container {
-    position: absolute;
-    z-index: 1; }
+}
 
 .grid-row {
     margin-bottom: 15px; }
