@@ -86,9 +86,9 @@ graph blue: #d3e1ec
 	width: 40px;
 }
 
-.legend-text {
-	display: flex;
-	flex-direction: column;
+.legend-label {
+	white-space: nowrap;
+	padding: 10px;
 }
 
 /* Config */
